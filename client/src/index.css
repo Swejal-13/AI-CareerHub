@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-surface-light dark:bg-surface-dark text-gray-800 dark:text-gray-100;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 bg-brand-500 hover:bg-brand-600 text-white rounded-lg font-medium text-sm transition-all duration-150 active:scale-95 shadow-md disabled:opacity-60 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 rounded-lg font-medium text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-150 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-2 text-gray-600 dark:text-gray-400 rounded-lg text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-150;
+  }
+
+  .card {
+    @apply bg-white dark:bg-surface-card rounded-xl shadow-card border border-gray-100 dark:border-gray-700/50;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-card-hover transition-shadow duration-200;
+  }
+
+  .input {
+    @apply w-full px-3.5 py-2.5 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-400/40 focus:border-brand-400 transition-all duration-150;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-blue {
+    @apply badge bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400;
+  }
+
+  .badge-green {
+    @apply badge bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400;
+  }
+
+  .badge-orange {
+    @apply badge bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400;
+  }
+
+  .badge-red {
+    @apply badge bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400;
+  }
+
+  .badge-gray {
+    @apply badge bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400;
+  }
+
+  .section-title {
+    @apply font-display text-xl font-700 text-gray-900 dark:text-white;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all duration-150 cursor-pointer;
+  }
+
+  .nav-link.active {
+    @apply bg-brand-50 dark:bg-brand-900/20 text-brand-600 dark:text-brand-400;
+  }
+
+  .progress-bar {
+    @apply h-2 rounded-full bg-gray-100 dark:bg-gray-700 overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full rounded-full bg-gradient-to-r from-brand-400 to-brand-600 transition-all duration-700;
+  }
+}
+
+/* Kanban drag styles */
+.drag-over {
+  @apply ring-2 ring-brand-400 ring-offset-2;
+}
+
+/* Score ring animation */
+@keyframes scoreRing {
+  from { stroke-dashoffset: 283; }
+  to { stroke-dashoffset: var(--score-offset); }
+}
+
+.score-ring {
+  animation: scoreRing 1.2s ease-out forwards;
+}
+
+/* Chat bubble */
+.chat-bubble-user {
+  @apply bg-brand-500 text-white rounded-2xl rounded-br-sm px-4 py-2.5 max-w-xs ml-auto;
+}
+
+.chat-bubble-ai {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-2xl rounded-bl-sm px-4 py-2.5 max-w-xs;
+}
+
+/* Loading skeleton */
+.skeleton {
+  @apply bg-gray-100 dark:bg-gray-700 animate-pulse rounded;
+}
+
+/* Toast override */
+.react-hot-toast {
+  font-family: 'DM Sans', sans-serif !important;
+}
