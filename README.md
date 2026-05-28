@@ -97,5 +97,4 @@ Use the **demo account** shortcut on the login page, or:
 - Password: `demo1234`
 
 Or create a new account via the signup page.
-
 ---
